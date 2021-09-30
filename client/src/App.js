@@ -1,5 +1,15 @@
 import "./App.css";
+import AddTask from "./components/AddTask";
+import Task from "./components/Task";
+import axios from "axios";
+import { useEffect, useState } from "react";
 function App() {
+  const [state, setState] = useState([]);
+  useEffect(() => {
+    axios.get("/task").then(({ data }) => {
+      setState(data);
+    });
+  }, []);
   return (
     <div className="App">
       <div className="container">
@@ -11,93 +21,22 @@ function App() {
                 type="button"
                 className="btn btn-outline-primary"
                 data-bs-toggle="modal"
-                data-bs-target="#exampleModal"
+                data-bs-target="#tambahData"
               >
-                Launch demo modal
+                <i className="bi bi-plus-lg"></i> Tambah Data
               </button>
             </div>
             <div className="col-md-12">
               <ul className="list-group">
-                <li className="list-group-item d-flex align-items-center">
-                  Item 1
-                  <button
-                    type="button"
-                    className="btn-close ms-auto"
-                    aria-label="Close"
-                  ></button>
-                </li>
+                {state.map((item) => {
+                  return <Task title={item.title} />;
+                })}
               </ul>
             </div>
           </div>
         </div>
       </div>
-      <div className="modal" tabindex="-1">
-        <div className="modal-dialog">
-          <div className="modal-content">
-            <div className="modal-header">
-              <h5 className="modal-title">Modal title</h5>
-              <button
-                type="button"
-                className="btn-close"
-                data-bs-dismiss="modal"
-                aria-label="Close"
-              ></button>
-            </div>
-            <div className="modal-body">
-              <p>Modal body text goes here.</p>
-            </div>
-            <div className="modal-footer">
-              <button
-                type="button"
-                className="btn btn-secondary"
-                data-bs-dismiss="modal"
-              >
-                Close
-              </button>
-              <button type="button" className="btn btn-primary">
-                Save changes
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div
-        className="modal fade"
-        id="exampleModal"
-        tabindex="-1"
-        aria-labelledby="exampleModalLabel"
-        aria-hidden="true"
-      >
-        <div className="modal-dialog">
-          <div className="modal-content">
-            <div className="modal-header">
-              <h5 className="modal-title" id="exampleModalLabel">
-                Modal title
-              </h5>
-              <button
-                type="button"
-                className="btn-close"
-                data-bs-dismiss="modal"
-                aria-label="Close"
-              ></button>
-            </div>
-            <div className="modal-body">...</div>
-            <div className="modal-footer">
-              <button
-                type="button"
-                className="btn btn-secondary"
-                data-bs-dismiss="modal"
-              >
-                Close
-              </button>
-              <button type="button" className="btn btn-primary">
-                Save changes
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
+      <AddTask />
     </div>
   );
 }
