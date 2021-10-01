@@ -19,16 +19,16 @@ function App() {
     <div className="App">
       <div className="container">
         <div className="row">
-          <div className="col-md-6 mx-auto mt-5">
+          <div className="col-md-6 mx-auto mt-5 border rounded bg-light p-3">
             <div className="col-md-12 d-flex justify-content-between mb-4">
-              <h3 className="d-inline">Tasklist</h3>
+              <h3 className="d-inline">{new Date().getUTCDate}</h3>
               <button
                 type="button"
-                className="btn btn-outline-primary"
+                className="btn btn-transparent text-success"
                 data-bs-toggle="modal"
                 data-bs-target="#tambahData"
               >
-                <i className="bi bi-plus-lg"></i> Tambah Data
+                <i className="bi bi-plus-lg"></i>
               </button>
             </div>
             <div className="col-md-12">
@@ -36,7 +36,13 @@ function App() {
                 {state &&
                   state.map((item) => {
                     return (
-                      <Task key={item._id} _id={item._id} title={item.title} />
+                      <Task
+                        key={item._id}
+                        _id={item._id}
+                        title={item.title}
+                        description={item.description}
+                        deadline={item.deadline}
+                      />
                     );
                   })}
               </ul>
