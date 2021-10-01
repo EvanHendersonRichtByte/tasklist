@@ -14,7 +14,7 @@ export default function AddTask() {
   };
   const onSubmit = () => {
     console.log(state);
-    axios.post("/task", state);
+    axios.post("https://tasklist1a.herokuapp.com/task", state);
   };
   return (
     <div

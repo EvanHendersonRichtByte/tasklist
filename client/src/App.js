@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 function App() {
   const [state, setState] = useState([]);
   useEffect(() => {
-    axios.get("/task").then(({ data }) => {
+    axios.get("https://tasklist1a.herokuapp.com/task").then(({ data }) => {
       setState(data);
     });
   }, []);
