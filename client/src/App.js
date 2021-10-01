@@ -6,15 +6,20 @@ import { useEffect, useState } from "react";
 function App() {
   const [state, setState] = useState([]);
   useEffect(() => {
-    axios.get("https://tasklist1a.herokuapp.com/task").then(({ data }) => {
-      setState(data);
-    });
+    axios
+      .get("https://tasklist1a.herokuapp.com/task")
+      .then(({ data }) => {
+        setState(data);
+      })
+      .catch((err) => {
+        throw err;
+      });
   }, []);
   return (
     <div className="App">
       <div className="container">
         <div className="row">
-          <div className="col-md-4 mx-auto mt-5">
+          <div className="col-md-6 mx-auto mt-5">
             <div className="col-md-12 d-flex justify-content-between mb-4">
               <h3 className="d-inline">Tasklist</h3>
               <button
@@ -28,9 +33,12 @@ function App() {
             </div>
             <div className="col-md-12">
               <ul className="list-group">
-                {state.map((item) => {
-                  return <Task title={item.title} />;
-                })}
+                {state &&
+                  state.map((item) => {
+                    return (
+                      <Task key={item._id} _id={item._id} title={item.title} />
+                    );
+                  })}
               </ul>
             </div>
           </div>

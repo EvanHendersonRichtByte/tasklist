@@ -21,7 +21,7 @@ module.exports = task = (app) => {
 
   app.delete("/task/:id", (req, res) => {
     Task.deleteOne({ _id: req.params.id }, () => {
-      console.log("Deleted");
+      res.send('Data deleted')
     });
   });
 };
