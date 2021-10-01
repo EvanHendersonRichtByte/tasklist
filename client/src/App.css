@@ -1,13 +1,55 @@
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
 body {
-  background: #e0eafc; /* fallback for old browsers */
+  background: #02aab0; /* fallback for old browsers */
   background: -webkit-linear-gradient(
     to right,
-    #cfdef3,
-    #e0eafc
+    #00cdac,
+    #037391
   ); /* Chrome 10-25, Safari 5.1-6 */
   background: linear-gradient(
-    to right,
-    #cfdef3,
-    #e0eafc
+    to bottom right,
+    #00cdac,
+    #037391
   ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background-repeat: no-repeat;
+  height: 100vh;
+}
+
+.header {
+  background: url("./assets/images/header.jpg");
+  background-position: bottom;
+  background-size: cover;
+}
+
+ul.list-task {
+  height: 350px;
+  overflow-y: scroll;
+  scrollbar-color: #000 transparent;
+  scrollbar-width: thin;
+}
+
+li.border-primary {
+  border-color: #037391 !important;
+}
+
+li .title {
+  color: #037391 !important;
 }

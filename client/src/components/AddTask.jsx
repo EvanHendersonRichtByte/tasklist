@@ -42,7 +42,7 @@ export default function AddTask() {
               <div className="modal-body">
                 <div className="mb-3">
                   <label htmlFor="title" className="form-label">
-                    Title
+                    Judul
                   </label>
                   <input
                     type="text"
@@ -56,7 +56,7 @@ export default function AddTask() {
                 </div>
                 <div className="mb-3">
                   <label htmlFor="description" className="form-label" required>
-                    Description
+                    Deskripsi
                   </label>
                   <textarea
                     className="form-control"
@@ -69,7 +69,7 @@ export default function AddTask() {
                 </div>
                 <div className="mb-3">
                   <label htmlFor="deadline" className="form-label">
-                    Deadline
+                    Tenggat
                   </label>
                   <input
                     type="date"

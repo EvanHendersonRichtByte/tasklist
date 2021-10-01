@@ -1,5 +1,5 @@
 const axios = require("axios");
-
+const { DateTime } = require("luxon");
 export default function Task({ _id, title, description, deadline }) {
   const deleteTask = (e) => {
     e.preventDefault();
@@ -11,13 +11,18 @@ export default function Task({ _id, title, description, deadline }) {
       });
   };
   return (
-    <li className="list-group-item d-flex justify-content-between align-items-center mb-2">
+    <li className="border-start border-5 border-top-0 border-end-0 border-bottom-0 border-primary list-group-item d-flex justify-content-between align-items-center mb-2 shadow">
       <button
         className="btn w-100 btn-transparent text-start"
         data-bs-toggle="modal"
         data-bs-target={`#task${_id}`}
       >
-        <h4 className="d-inline align-middle text-primary">{title}</h4>
+        <div className="d-flex justify-content-between align-items-center">
+          <h5 className="title d-inline align-middle">{title}</h5>
+          <h6 className="d-inline align-middle text-end ms-auto">
+            Tenggat: {new Date(deadline).toDateString()}
+          </h6>
+        </div>
       </button>
       <div className="form">
         <form
@@ -26,45 +31,45 @@ export default function Task({ _id, title, description, deadline }) {
         >
           <button
             type="submit"
-            className="btn-close ms-auto"
+            className="btn-close"
             aria-label="Close"
           ></button>
         </form>
       </div>
       <div
-        class="modal fade"
+        className="modal fade"
         id={`task${_id}`}
-        tabindex="-1"
+        tabIndex="-1"
         aria-labelledby="exampleModalLabel"
         aria-hidden="true"
       >
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel">
+        <div className="modal-dialog">
+          <div className="modal-content">
+            <div className="modal-header">
+              <h5 className="modal-title" id="exampleModalLabel">
                 {title}
               </h5>
               <button
                 type="button"
-                class="btn-close"
+                className="btn-close"
                 data-bs-dismiss="modal"
                 aria-label="Close"
               ></button>
             </div>
-            <div class="modal-body">{description}</div>
-            <div class="modal-footer">
+            <div className="modal-body">{description}</div>
+            {/* <div className="modal-footer">
               <p className="me-auto">{new Date(deadline).toDateString()}</p>
               <button
                 type="button"
-                class="btn btn-secondary"
+                className="btn btn-secondary"
                 data-bs-dismiss="modal"
               >
                 Close
               </button>
-              <button type="button" class="btn btn-primary">
+              <button type="button" className="btn btn-primary">
                 Save changes
               </button>
-            </div>
+            </div> */}
           </div>
         </div>
       </div>
