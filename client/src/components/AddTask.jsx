@@ -4,7 +4,6 @@ export default function AddTask() {
   const [state, setState] = useState({
     title: "",
     description: "",
-    deadline: "",
   });
 
   const onChange = (e) => {
@@ -65,19 +64,6 @@ export default function AddTask() {
                     value={state.description}
                     onChange={onChange}
                     required
-                  />
-                </div>
-                <div className="mb-3">
-                  <label htmlFor="deadline" className="form-label">
-                    Tenggat
-                  </label>
-                  <input
-                    type="date"
-                    className="form-control"
-                    id="deadline"
-                    name="deadline"
-                    value={state.deadline}
-                    onChange={onChange}
                   />
                 </div>
               </div>

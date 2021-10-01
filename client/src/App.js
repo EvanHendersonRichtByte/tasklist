@@ -53,7 +53,6 @@ function App() {
                         _id={item._id}
                         title={item.title}
                         description={item.description}
-                        deadline={item.deadline}
                       />
                     );
                   })}

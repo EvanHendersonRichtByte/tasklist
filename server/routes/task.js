@@ -16,12 +16,18 @@ module.exports = task = (app) => {
   });
 
   app.put("/task/:id", (req, res) => {
-    res.send("Edit data");
+    Task.findByIdAndUpdate(req.params.id, req.body, () => {
+      try {
+        res.send("♣updated");
+      } catch (err) {
+        throw err;
+      }
+    });
   });
 
   app.delete("/task/:id", (req, res) => {
     Task.deleteOne({ _id: req.params.id }, () => {
-      res.send('Data deleted')
+      res.send("Data deleted");
     });
   });
 };
