@@ -179,8 +179,8 @@ export default function Task({ _id, title, description, deadline }) {
                 >
                   Cancel
                 </button>
-                <button type="submit" className="btn btn-success">
-                  <i className="bi bi-check2"></i> Submit
+                <button type="submit" className="btn btn-primary">
+                  <i className="bi bi-check2"></i> Update
                 </button>
               </div>
             </form>
