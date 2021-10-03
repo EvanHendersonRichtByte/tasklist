@@ -1,6 +1,7 @@
 import "./App.css";
 import AddTask from "./components/AddTask";
 import Task from "./components/Task";
+import DownloadBackup from "./components/DownloadBackup";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { DateTime } from "luxon";
@@ -43,7 +44,10 @@ function App() {
               </div>
             </div>
             <div className="col-md-12">
-              <h5 className="my-2 mb-3">Task List</h5>
+              <div className="my-2 mb-3 d-flex justify-content-between align-items-center ">
+                <h5>Task List</h5>
+                <DownloadBackup/>
+              </div>
               <ul className="list-task list-group pb-1">
                 {state &&
                   state.map((item) => {
