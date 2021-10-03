@@ -1,5 +1,7 @@
 import { useState } from "react";
 import axios from "axios";
+import ReactQuill from "react-quill";
+import "react-quill/dist/quill.snow.css";
 export default function AddTask() {
   const [state, setState] = useState({
     title: "",
@@ -10,6 +12,12 @@ export default function AddTask() {
     setState((prevState) => ({
       ...prevState,
       [e.target.name]: e.target.value,
+    }));
+  };
+  const quillChange = (value) => {
+    setState((prevState) => ({
+      ...prevState,
+      description: value,
     }));
   };
   const onSubmit = (e) => {
@@ -57,13 +65,17 @@ export default function AddTask() {
                   <label htmlFor="description" className="form-label" required>
                     Deskripsi
                   </label>
-                  <textarea
+                  {/* <textarea
                     className="form-control"
                     rows="3"
                     name="description"
                     value={state.description}
                     onChange={onChange}
                     required
+                  /> */}
+                  <ReactQuill
+                    value={state.description}
+                    onChange={quillChange}
                   />
                 </div>
               </div>

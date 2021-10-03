@@ -1,4 +1,5 @@
 import { useState } from "react";
+import ReactQuill from "react-quill";
 const axios = require("axios");
 export default function Task({ _id, title, description, deadline }) {
   const [state, setState] = useState({
@@ -19,6 +20,12 @@ export default function Task({ _id, title, description, deadline }) {
     setState((prevState) => ({
       ...prevState,
       [e.target.name]: e.target.value,
+    }));
+  };
+  const quillChange = (value) => {
+    setState((prevState) => ({
+      ...prevState,
+      description: value,
     }));
   };
   const editModal = (_id, title, description) =>
@@ -96,7 +103,9 @@ export default function Task({ _id, title, description, deadline }) {
                 aria-label="Close"
               ></button>
             </div>
-            <div className="modal-body">{description}</div>
+            <div className="modal-body">
+              <ReactQuill value={description} readOnly={true} theme={null} />
+            </div>
             {/* <div className="modal-footer">
               <p className="me-auto">{new Date(deadline).toDateString()}</p>
               <button
@@ -159,13 +168,9 @@ export default function Task({ _id, title, description, deadline }) {
                     >
                       Deskripsi
                     </label>
-                    <textarea
-                      className="form-control"
-                      rows="3"
-                      name="description"
+                    <ReactQuill
                       value={state.description}
-                      onChange={onChange}
-                      required
+                      onChange={quillChange}
                     />
                   </div>
                 </div>
