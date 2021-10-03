@@ -29,7 +29,7 @@ function App() {
     <div className="App">
       <div className="container">
         <div className="row">
-          <div className="col-md-6 mx-auto mt-5 rounded bg-light shadow">
+          <div className="col-xs-12 col-sm-10 col-md-8 col-lg-6 col-xl-6 col-xxl-6 mx-auto mt-5 rounded bg-light shadow">
             <div className="row">
               <div className="header d-flex align-items-center justify-content-between rounded-top border-bottom-0 w-100 pt-5 pb-5 ps-3">
                 <h5 className="d-inline text-light">{timeFormat()}</h5>
@@ -46,7 +46,7 @@ function App() {
             <div className="col-md-12">
               <div className="my-2 mb-3 d-flex justify-content-between align-items-center ">
                 <h5>Task List</h5>
-                <DownloadBackup/>
+                <DownloadBackup />
               </div>
               <ul className="list-task list-group pb-1">
                 {state &&
