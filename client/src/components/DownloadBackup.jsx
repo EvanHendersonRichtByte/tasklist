@@ -6,7 +6,7 @@ const ExcelFile = ReactExport.ExcelFile;
 const ExcelSheet = ReactExport.ExcelFile.ExcelSheet;
 const ExcelColumn = ReactExport.ExcelFile.ExcelColumn;
 
-export default function () {
+export default function DownloadBackup() {
   const [state, setState] = useState({});
   useEffect(() => {
     axios
