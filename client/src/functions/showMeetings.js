@@ -1,7 +1,7 @@
 import axios from "axios";
 import { DateTime } from "luxon";
 import { useEffect, useState } from "react";
-export default function ShowMeetings() {
+export default function ShowMeetings(pilihanJadwal) {
   const [state, setState] = useState([]);
 
   useEffect(() => {
@@ -18,16 +18,26 @@ export default function ShowMeetings() {
   let besok = "";
   const hari = ["Senin", "Selasa", "Rabu", "Kamis", "Jumat", "Sabtu", "Minggu"];
   hariIni = hari[currentDay - 1];
-  besok = hari[currentDay - 7];
+  besok = hari[currentDay];
 
-  const jadwalHariIni = () => {
-    state.map((item) => item.__EMPTY === hariIni && console.log(item));
+  const jadwal = (hari) => {
+    // hari = {ini, besok}
+    let res = {};
+    if (hari === "ini") {
+      state.map((item) => {
+        if (item.__EMPTY === hariIni) Object.assign(res, item);
+        return null;
+      });
+    } else if (hari === "besok") {
+      state.map((item) => {
+        if (item.__EMPTY === besok) Object.assign(res, item);
+        return null;
+      });
+    }
+    return res;
   };
 
-  const jadwalBesok = () => {
-    state.map((item) => item.__EMPTY === besok && console.log(item));
-  };
-
+  return jadwal(pilihanJadwal);
 }
 
 /** BACKUP */
